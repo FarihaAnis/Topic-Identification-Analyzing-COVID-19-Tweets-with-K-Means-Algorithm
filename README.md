@@ -11,7 +11,7 @@
 In the wake of the COVID-19 pandemic, an abundance of textual data has emerged on social media, reflecting public sentiments and discussions about the crisis. My project focused on utilizing unsupervised machine learning techniques to analyze a corpus of COVID-19-related tweets to extract valuable insights about prevalent public sentiments and topics.
 
 **Task:** </br>
-My task involved utilizing the K-Means clustering algorithm to categorize tweets into distinct thematic groups that represent the topics discussed by the public. This required the strategic preparation of the data, applying both TF-IDF and BoW vectorizations, and clustering the data using K-Means.
+My task involved utilizing the K-Means clustering algorithm to categorize tweets into distinct thematic groups that represent the topics discussed by the public. This required the strategic preparation of the data, exploring both TF-IDF and BoW vectorizations, and clustering the data using K-Means.
 
 **Action:** </br>
 In this project, I used TF-IDF and BoW vectorizations to convert tweet data into numerical formats, followed by PCA for dimensionality reduction. This setup facilitated effective K-Means clustering.
