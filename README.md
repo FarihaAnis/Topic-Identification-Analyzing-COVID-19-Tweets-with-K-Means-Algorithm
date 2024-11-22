@@ -1,51 +1,71 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/1aa6f691-2aef-4204-9933-db4887ed67c7" width=250, height=200>
 
-# Topic Identification: Analyzing Covid-19 Tweets with K-Means Algorithm
+# Topic Identification from COVID-19 Tweets
+
 </div>
 
-**Skills:**
+## Objective
+To uncover key topics discussed in tweets during the COVID-19 pandemic using machine learning clustering techniques and text analysis.
 
----
-**Situation:** </br>
-In the wake of the COVID-19 pandemic, an abundance of textual data has emerged on social media, reflecting public sentiments and discussions about the crisis. My project focused on utilizing unsupervised machine learning techniques to analyze a corpus of COVID-19-related tweets to extract valuable insights about prevalent public sentiments and topics.
+## Tools and Libraries
+- **Data Manipulation**: `pandas`, `numpy`
+- **Data Visualization**: `matplotlib`, `seaborn`, `WordCloud`
+- **Text Preprocessing**: `re`, `nltk` (`stopwords`, `wordnet`, `punkt`), `CountVectorizer`, `TfidfVectorizer`
+- **Clustering Techniques**: `KMeans` (from `sklearn`)
+- **Dimensionality Reduction**: `PCA` (from `sklearn.decomposition`)
+- **Model Evaluation**: `silhouette_score`, `KneeLocator`
+- **Utility**: `tqdm`
 
-**Task:** </br>
-My task involved utilizing the K-Means clustering algorithm to categorize tweets into distinct thematic groups that represent the topics discussed by the public. This required the strategic preparation of the data, exploring both TF-IDF and BoW vectorizations, and clustering the data using K-Means.
+## Dataset
+**Source**: [COVID-19 tweet dataset](https://www.kaggle.com/datasets/datatattle/covid-19-nlp-text-classification)
 
-**Action:** </br>
-In this project, I used TF-IDF and BoW vectorizations to convert tweet data into numerical formats, followed by PCA for dimensionality reduction. This setup facilitated effective K-Means clustering.
-- **Feature Extraction**: Applied TF-IDF and BoW to the 'OriginalTweet' column.
-- **Dimensionality Reduction**: Utilized PCA to simplify data complexity.
-- **K-Means Clustering**: Started with initial settings (n_clusters=3, init='k-means++') and refined them based on silhouette scores.
-- **Cluster Tuning**: Tested various cluster sizes (2 to 10), optimizing based on silhouette scores and WCSS using 'KneeLocator'.
-- **Final Evaluation**: Re-ran K-Means with optimized settings, assessed cluster quality, and visualized the results.
+### Columns
+1. **Location**: The location of the user who posted the tweet.
+2. **Tweet At**: The timestamp when the tweet was posted.
+3. **Original Tweet**: The text of the tweet.
+4. **Label**: The manually assigned label categorizing the tweet's content.
 
-**Result:** </br>
-K-Means clustering with TF-IDF vectorization identified four distinct clusters reflecting public responses to COVID-19. The results from the topic identification analysis provide valuable insights into public sentiments and behaviors during the pandemic, which can be crucial for policymakers, health professionals, and researchers to understand societal impacts, inform public health strategies, and tailor communication efforts. The clusters help in identifying key concerns, trends, and shifts in public opinion, enhancing the ability to respond to and manage the crisis more effectively.
+### Key Details
+- **Records**: 41,157 tweets covering diverse pandemic-related discussions.
 
-<p align="center">
-  <strong>CLUSTER 0: Online Shopping and Supermarket Accessibility</strong>
-  <br>
-  <img src="https://github.com/user-attachments/assets/ad318b98-14a4-497a-9f6e-d2f719cc1029" alt="CLUSTER 0: Online Shopping and Supermarket Accessibility">
-</p>
+## Methodology
+1. **Data Preprocessing**:
+   - Cleaned tweets by removing URLs, special characters, and stopwords.
+   - Tokenized and vectorized text using TF-IDF and Bag of Words (BoW) methods.
+2. **Clustering Analysis**:
+   - Applied dimensionality reduction using PCA.
+   - Used KMeans clustering to group tweets into distinct topics.
+   - Tuned the number of clusters using silhouette scores and elbow plots.
+3. **Topic Exploration**:
+   - Conducted word frequency analysis within clusters to identify prevalent themes.
 
-<p align="center">
-  <strong>CLUSTER 1: Grocery Shopping Behavior</strong>
-  <br>
-  <img src="https://github.com/user-attachments/assets/5b3a670d-46c4-4484-9996-0508b14f174c" alt="CLUSTER 1: Grocery Shopping Behavior">
-</p>
+## Models
+### Clustering Models
+- **KMeans with TF-IDF Vectorization**
+- **KMeans with Bag of Words Vectorization**
 
-<p align="center">
-  <strong>CLUSTER 2: Food Supply Chain and Panic Buying</strong>
-  <br>
-  <img src="https://github.com/user-attachments/assets/f4638111-61af-4f0d-9574-43d66fd5c664" alt="CLUSTER 2: Food Supply Chain and Panic Buying">
-</p>
+### Key Results
+- **TF-IDF Model**:
+  - Optimal number of clusters: `4` (identified via KneeLocator).
+  - Silhouette Score: `0.7587` (with cosine similarity).
+- **BoW Model**:
+  - Optimal number of clusters: `5`.
+  - Silhouette Score: `0.7475`.
 
-<p align="center">
-  <strong>CLUSTER 3: Consumer Behavior and Economic Impact</strong>
-  <br>
-  <img src="https://github.com/user-attachments/assets/c40cef78-e61a-4302-ac93-46cd8ff589cc" alt="CLUSTER 3: Consumer Behavior and Economic Impact">
-</p>
+## Insights
+### Cluster Details
+- **Cluster 0**: Online Shopping and Supermarket Accessibility
+  - Focused on the shift to digital platforms for essentials during lockdowns.
+- **Cluster 1**: Grocery Shopping Behavior
+  - Highlighted changes in consumer habits and the role of frontline workers.
+- **Cluster 2**: Food Supply Chain and Panic Buying
+  - Captured stockpiling behavior and supply chain concerns during the pandemic.
+- **Cluster 3**: Economic Impact and Consumer Behavior
+  - Reflected market fluctuations and consumer anxiety related to COVID-19.
+
+## Conclusion
+The analysis effectively identified key topics in public discussions during the pandemic. The TF-IDF-based KMeans model outperformed the BoW-based model in distinguishing well-defined clusters, offering valuable insights for policymakers, businesses, and researchers to understand public priorities and behaviors during a global crisis.
+
 
 
